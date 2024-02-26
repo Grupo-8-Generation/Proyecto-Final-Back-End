@@ -34,14 +34,8 @@ public class PaymentController {
     @PutMapping
     @RequestMapping(value = "modificarPagos", method = RequestMethod.PUT)
     public ResponseEntity<?> modificarPagos(@RequestBody Payment payment){
-        Payment modificarPagos=this.pagsimpl.modificarPagos(payment);
+        Payment modificarPagos=this.pagsimpl.actualizarPagos(payment);
         return ResponseEntity.status(HttpStatus.CREATED).body(modificarPagos);
-    }
-
-    @PatchMapping("actualizarPagos/{id}")
-    public ResponseEntity<?> actualizarPagos(@PathVariable int id){
-        Payment payment=this.pagsimpl.actualizarPagos(id);
-        return ResponseEntity.ok(payment);
     }
 
     @GetMapping
