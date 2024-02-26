@@ -1,42 +1,42 @@
 package com.coffe.Wehyah.Service;
-
 import com.coffe.Wehyah.Model.CartItems;
 import com.coffe.Wehyah.Repository.CartItemsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
+@Service
 
 public class CARSIMPL implements CarService {
+
     @Autowired
     private CartItemsRepo cartItemsRepo;
 
     @Override
     public List<CartItems> consultarCarroCompras() {
-        return null;
+
+        return (List<CartItems>)this.cartItemsRepo.findAll();
     }
 
     @Override
     public CartItems crearCarroCompras(CartItems cartItems) {
-        return null;
+        cartItems.setProductsCuantity(cartItems.getProductsCuantity());
+        return this.cartItemsRepo.save(cartItems);
     }
 
     @Override
-    public CartItems modificarCarroCompras(CartItems cartItems) {
-        return null;
-    }
+    public CartItems actualizarCarroCompras(CartItems cartItems) {
+        return this.cartItemsRepo.save(cartItems);
 
-    @Override
-    public CartItems actualizarCarroCompras(int id) {
-        return null;
     }
 
     @Override
     public CartItems buscarCarroCompras(int id) {
-        return null;
+        return this.cartItemsRepo.findById(id).get();
     }
 
     @Override
     public void eliminarCarroCompras(int id) {
+        this.cartItemsRepo.deleteById(id);
 
     }
 }
