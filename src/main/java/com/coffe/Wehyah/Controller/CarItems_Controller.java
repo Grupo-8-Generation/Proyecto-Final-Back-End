@@ -28,21 +28,14 @@ public class CarItems_Controller {
         return ResponseEntity.status(HttpStatus.CREATED).body(carroComprasCrear);
     }
 
-    @PutMapping
-    @RequestMapping(value = "modificarCarroCompras", method = RequestMethod.PUT)
-    public ResponseEntity<?> modificarCarroCompras(@RequestBody CartItems cartItems){
-        CartItems carroComprasModificar=this.carsimpl.modificarCarroCompras(cartItems);
-        return ResponseEntity.status(HttpStatus.CREATED).body(carroComprasModificar);
-    }
-
-    @PatchMapping("actualizarCarroCompras/{id}")
-    public ResponseEntity<?> actualizarCarroCompras(@PathVariable int id){
-        CartItems cartItems=this.carsimpl.actualizarCarroCompras(id);
-        return ResponseEntity.ok(cartItems);
+   @PatchMapping("actualizarCarroCompras")
+    public ResponseEntity<?> actualizarCarroCompras(@RequestBody CartItems cartItems){
+        CartItems carroComprasActualizar=this.carsimpl.actualizarCarroCompras(cartItems);
+        return ResponseEntity.ok(carroComprasActualizar);
     }
 
     @GetMapping
-    @RequestMapping(value = "buscarCarroCompras{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "buscarCarroCompras/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarCarroCompras(@PathVariable int id){
         CartItems cartItems=this.carsimpl.buscarCarroCompras(id);
         return ResponseEntity.ok(cartItems);
