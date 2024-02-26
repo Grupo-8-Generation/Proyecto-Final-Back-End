@@ -7,8 +7,7 @@ import java.util.List;
 public interface CarService {
     public List<CartItems> consultarCarroCompras();
     public CartItems crearCarroCompras(CartItems cartItems);
-    public CartItems modificarCarroCompras(CartItems cartItems);
-    public CartItems actualizarCarroCompras(int id);
+    public CartItems actualizarCarroCompras(CartItems cartItems);
     public CartItems buscarCarroCompras(int id);
     public void eliminarCarroCompras(int id);
 }
