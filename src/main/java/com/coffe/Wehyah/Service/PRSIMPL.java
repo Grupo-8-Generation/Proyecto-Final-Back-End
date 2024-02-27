@@ -15,26 +15,21 @@ public class PRSIMPL implements ProductService{
 
     @Override
     public Product crearProducto(Product product) {
-        return null;
+        return this.productRepo.save(product);
     }
 
     @Override
-    public Product modificarProducto(Product product) {
-        return null;
-    }
-
-    @Override
-    public Product actualizarProducto(int id) {
-        return null;
+    public Product actualizarProducto(Product product) {
+        return this.productRepo.save(product);
     }
 
     @Override
     public Product buscarProducto(int id) {
-        return null;
+        return this.productRepo.findById(id).get();
     }
 
     @Override
     public void eliminarProducto(int id) {
-
+        this.productRepo.deleteById(id);
     }
 }

@@ -11,8 +11,7 @@ import java.util.List;
 public interface OrDeService  {
     public List<OrderDetail> consultarDetalleDeOrden();
     public OrderDetail crearDetalleDeOrden(OrderDetail orderDetail);
-    public OrderDetail modificarDetalleDeOrden(OrderDetail orderDetail);
-    public OrderDetail actualizarDetalleDeOrden(int id);
+    public OrderDetail actualizarDetalleDeOrden(OrderDetail orderDetail);
     public OrderDetail buscarDetalleDeOrden(int id);
     public void eliminarDetalleDeOrden(int id);
 }

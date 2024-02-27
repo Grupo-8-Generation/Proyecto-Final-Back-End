@@ -1,6 +1,6 @@
 package com.coffe.Wehyah.Controller;
 import com.coffe.Wehyah.Model.OrderDetail;
-import com.coffe.Wehyah.Service.OR_DET_SIMPL;
+import com.coffe.Wehyah.Service.OrDeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/detalleOrdenes")
 public class OrderDetail_Controller {
     @Autowired
-    private OR_DET_SIMPL or_det_simpl;
+    private OrDeService or_det_simpl;
 
     @GetMapping
     @RequestMapping(value = "consultarDetalleDeOrden", method = RequestMethod.GET)
@@ -30,14 +30,8 @@ public class OrderDetail_Controller {
     @PutMapping
     @RequestMapping(value = "modificarDetalleDeOrden", method = RequestMethod.PUT)
     public ResponseEntity<?> modificarDetalleDeOrden(@RequestBody OrderDetail orderDetail){
-        OrderDetail detalleDeOrdenModificar=this.or_det_simpl.modificarDetalleDeOrden(orderDetail);
+        OrderDetail detalleDeOrdenModificar=this.or_det_simpl.actualizarDetalleDeOrden(orderDetail);
         return ResponseEntity.status(HttpStatus.CREATED).body(detalleDeOrdenModificar);
-    }
-
-    @PatchMapping("actualizarDetalleDeOrden/{id}")
-    public ResponseEntity<?> actualizarDetalleDeOrden(@PathVariable int id){
-        OrderDetail orderDetail=this.or_det_simpl.actualizarDetalleDeOrden(id);
-        return ResponseEntity.ok(orderDetail);
     }
 
     @GetMapping

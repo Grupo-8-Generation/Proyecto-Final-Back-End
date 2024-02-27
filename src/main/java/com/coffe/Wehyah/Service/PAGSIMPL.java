@@ -42,4 +42,6 @@ public class PAGSIMPL implements PaymentService{
     public void eliminarPagos(int id) {
         this.repo.deleteById(id);
     }
+
+
 }

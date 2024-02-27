@@ -31,14 +31,10 @@ private USIMPL usimpl;
     @PutMapping
     @RequestMapping(value = "modificarUsuario",method = RequestMethod.PUT)
     public ResponseEntity<?> modificarUsuario(@RequestBody User usuario){
-        User userModificar=this.usimpl.modificarUsuario(usuario);
+        User userModificar=this.usimpl.actualizarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(userModificar);
     }
-    @PatchMapping("actualizarUsuario/{id}")
-    public ResponseEntity<?> actualizarUsuario(@PathVariable int id) {
-        User user=this.usimpl.actualizarUsuario(id);
-        return ResponseEntity.ok(user);
-    }
+
     @GetMapping
     @RequestMapping(value = "buscarUsuario/{id}",method = RequestMethod.GET)
     public ResponseEntity<?> buscarUsuario(@PathVariable int id){
