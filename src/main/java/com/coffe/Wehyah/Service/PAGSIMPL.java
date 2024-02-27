@@ -16,11 +16,6 @@ public class PAGSIMPL implements PaymentService{
     }
 
     @Override
-    public Payment modificarPagos(Payment payment) {
-        return null;
-    }
-
-    @Override
     public Payment actualizarPagos(int id) {
         return null;
     }

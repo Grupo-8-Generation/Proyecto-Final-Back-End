@@ -1,5 +1,6 @@
 package com.coffe.Wehyah.Service;
 import com.coffe.Wehyah.Model.Order;
+import com.coffe.Wehyah.Model.OrderDetail;
 import com.coffe.Wehyah.Repository.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,35 +11,30 @@ import java.util.List;
 public class ORSIMPL implements OrderService {
     @Autowired
     private OrderRepo orderRepo;
+
     @Override
-    public List<Order> consultarOrden() {
+    public List<Order> consultarDetalleDeOrden() {
         return (List<Order>) this.orderRepo.findAll();
     }
 
     @Override
-    public Order crearOrden(Order order) {
-
-        return null;
-
+    public OrderDetail crearDetalleDeOrden(OrderDetail orderDetail) {
+        orderDetail.setOrder(orderDetail.getOrder());
+        return this.orderRepo.save(order)
     }
 
     @Override
-    public Order modificarOrden(Order order) {
-        return null;
-    }
-
-    @Override
-    public Order actualizarOrden(int id) {
+    public OrderDetail actualizarDetalleDeOrden(OrderDetail orderDetail) {
         return null;
     }
 
     @Override
-    public Order buscarOrden(int id) {
+    public OrderDetail buscarDetalleDeOrden(int id) {
         return null;
     }
 
     @Override
-    public void eliminarOrden(int id) {
+    public void eliminarDetalleDeOrden(int id) {
 
     }
 }

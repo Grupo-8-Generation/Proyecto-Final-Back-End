@@ -30,14 +30,8 @@ public class OrderDetail_Controller {
     @PutMapping
     @RequestMapping(value = "modificarDetalleDeOrden", method = RequestMethod.PUT)
     public ResponseEntity<?> modificarDetalleDeOrden(@RequestBody OrderDetail orderDetail){
-        OrderDetail detalleDeOrdenModificar=this.or_det_simpl.modificarDetalleDeOrden(orderDetail);
+        OrderDetail detalleDeOrdenModificar=this.or_det_simpl.actualizarDetalleDeOrden(orderDetail);
         return ResponseEntity.status(HttpStatus.CREATED).body(detalleDeOrdenModificar);
-    }
-
-    @PatchMapping("actualizarDetalleDeOrden/{id}")
-    public ResponseEntity<?> actualizarDetalleDeOrden(@PathVariable int id){
-        OrderDetail orderDetail=this.or_det_simpl.actualizarDetalleDeOrden(id);
-        return ResponseEntity.ok(orderDetail);
     }
 
     @GetMapping

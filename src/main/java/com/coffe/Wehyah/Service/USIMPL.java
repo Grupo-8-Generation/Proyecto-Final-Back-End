@@ -10,31 +10,26 @@ public class USIMPL implements UserService {
     private UserRepository userRepository;
     @Override
     public List<User> consultarUsuario() {
-        return null;
+        return (List<User>)this.userRepository.findAll();
     }
 
     @Override
-    public User crearUsuario(User usuario) {
-        return null;
+    public User crearUsuario(User usuario) { usuario.setAddress(usuario.getAddress());
+        return this.userRepository.save(usuario);
     }
 
     @Override
-    public User modificarUsuario(User usuario) {
-        return null;
-    }
-
-    @Override
-    public User actualizarUsuario(int id) {
-        return null;
+    public User actualizarUsuario(User usuario) {
+        return this.userRepository.save(usuario);
     }
 
     @Override
     public User buscarUsuario(int id) {
-        return null;
+        return this.userRepository.findById(id).get();
     }
 
     @Override
-    public void eliminarUsuario(int id) {
+    public void eliminarUsuario(int id) { this.userRepository.deleteById(id);
 
     }
 }

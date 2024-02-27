@@ -1,39 +1,45 @@
 package com.coffe.Wehyah.Service;
 
+import com.coffe.Wehyah.Model.Order;
 import com.coffe.Wehyah.Model.OrderDetail;
+import com.coffe.Wehyah.Repository.OrderDetailRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class OR_DET_SIMPL implements OrDeService  {
+public class OR_DET_SIMPL implements OrderService  {
+
+    @Autowired
+    private OrderDetailRepo orderDetailRepo;
+
     @Override
-    public List<OrderDetail> consultarDetalleDeOrden() {
-        return null;
+    public List<Order> consultarDetalleDeOrden() {
+        return (List<OrderDetail>)this.orderDetailRepo.findAll();
     }
 
     @Override
     public OrderDetail crearDetalleDeOrden(OrderDetail orderDetail) {
-        return null;
+
+        orderDetail.setAddress(orderDetail.getAddress());
+        return this.orderDetailRepo.save(orderDetail);
     }
 
     @Override
-    public OrderDetail modificarDetalleDeOrden(OrderDetail orderDetail) {
-        return null;
+    public OrderDetail actualizarDetalleDeOrden(OrderDetail orderDetail) {
+        return this.orderDetailRepo.save(orderDetail);
     }
 
     @Override
-    public OrderDetail actualizarDetalleDeOrden(int id) {
-        return null;
+    public OrderDetail buscarDetalleDeOrden(int id)
+    {
+        return this.orderDetailRepo.findById(id).get();
     }
 
     @Override
-    public OrderDetail buscarDetalleDeOrden(int id) {
-        return null;
-    }
-
-    @Override
-    public void eliminarDetalleDeOrden(int id) {
-
+    public void eliminarDetalleDeOrden(int id)
+    {
+        this.orderDetailRepo.deleteById(id);
     }
 }

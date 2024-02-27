@@ -7,8 +7,7 @@ import java.util.List;
 public interface UserService {
 public List<User> consultarUsuario();
 public User crearUsuario(User usuario);
-public User modificarUsuario(User usuario);
-public User actualizarUsuario(int id);
+public User actualizarUsuario(User usuario);
 public User buscarUsuario(int id);
 public void eliminarUsuario(int id);
 }

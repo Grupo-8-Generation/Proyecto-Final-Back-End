@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table
 public class OrderDetail {
+    public Object set;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer OrderDetailID;
