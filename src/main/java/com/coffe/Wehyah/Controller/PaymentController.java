@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Pagos")
+@RequestMapping("Pagos")
 public class PaymentController {
     @Autowired
     private PAGSIMPL pagsimpl;

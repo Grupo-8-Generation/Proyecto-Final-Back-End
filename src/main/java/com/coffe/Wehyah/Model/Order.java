@@ -8,12 +8,14 @@ import java.util.Date;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Integer orderID;
 
     private Date creationDate;
     private double totalAmount;
     private String orderStatus;
     @ManyToOne
+    @JoinColumn(name = "users_id")
     private User user;
     @OneToOne(mappedBy = "order")
     private OrderDetail orderDetail;

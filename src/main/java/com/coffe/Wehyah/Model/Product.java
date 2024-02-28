@@ -14,6 +14,11 @@ public class Product {
     private double price;
     private int quantityAvailable;
 
+    @ManyToOne
+    @JoinColumn(name = "carItemsId")
+    private CartItems cartItems;
+
+
 
 //    public Product(){
 //

@@ -8,13 +8,23 @@ import java.util.Date;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
     private Integer paymentID;
+
+    @Column(name = "transaction_id")
     private Integer transactionID;
+
+    @Column(name = "payment_date")
     private Date paymentDate;
     private double amount;
+
+    @Column(name = "payment_method")
     private String paymentMethod;
+
+    @Column(name = "payment_status")
     private String paymentStatus;
     @OneToOne
+    @JoinColumn(name = "order_id")
     private  Order order;
     public Payment(){
 

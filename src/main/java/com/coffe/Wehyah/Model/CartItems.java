@@ -13,9 +13,10 @@ public class CartItems {
     private Integer productsCuantity;
     private double itemTotalPrice;
     @OneToOne
+    @JoinColumn(name = "order_id")
     private Order order;
-  //  @OneToMany(mappedBy = "cartItems")
-  //  private List<Product> products;
+    @OneToMany(mappedBy = "cartItems")
+    private List<Product> products;
 
     public CartItems(){
 

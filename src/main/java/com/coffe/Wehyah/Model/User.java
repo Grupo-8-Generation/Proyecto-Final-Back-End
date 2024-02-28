@@ -7,17 +7,37 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId")
     private Integer userId;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "phoneNumber")
     private String phoneNumber;
+
+    @Column(name = "identificationType")
     private String identificationType;
+
+    @Column(name = "dentificationNumber")
     private Integer dentificationNumber;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "country")
     private String country;
 
+    @Column(name = "isAdmin")
     private Boolean isAdmin;
     @OneToMany(mappedBy = "user")
     private List<TokenizedCard> tokenizedCards;

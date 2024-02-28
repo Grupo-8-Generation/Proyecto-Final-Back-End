@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Ordenes")
+@RequestMapping("Ordenes")
 public class OrderController {
     @Autowired
     private ORSIMPL orsimpl;
