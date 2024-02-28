@@ -21,7 +21,7 @@ public class OrderDetail_Controller {
     }
 
     @PutMapping
-    @RequestMapping(value = "crearDetalleDeOrden(", method = RequestMethod.POST)
+    @RequestMapping(value = "crearDetalleDeOrden", method = RequestMethod.POST)
     public ResponseEntity<?> crearDetalleDeOrden(@RequestBody OrderDetail orderDetail){
         OrderDetail detalleDeOrdenCrear= this.ODetalleSIMPL.crearDetalleDeOrden(orderDetail);
         return ResponseEntity.status(HttpStatus.CREATED).body(detalleDeOrdenCrear);

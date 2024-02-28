@@ -38,14 +38,8 @@ public class PaymentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(modificarPagos);
     }
 
-    @PatchMapping("actualizarPagos/{id}")
-    public ResponseEntity<?> actualizarPagos(@PathVariable int id){
-        Payment payment=this.pagsimpl.buscarPagos(id);
-        return ResponseEntity.ok(payment);
-    }
-
     @GetMapping
-    @RequestMapping(value = "buscarPagos{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "buscarPagos/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarPagos(@PathVariable int id){
         Payment payment=this.pagsimpl.buscarPagos(id);
         return ResponseEntity.ok(payment);
