@@ -14,6 +14,7 @@ public class TokenizedCard {
     private String maskedCardNumber;
     private Date expirationDate;
     @ManyToOne
+    @JoinColumn(name = "users_id")
     private User user;
     public TokenizedCard(){
 
