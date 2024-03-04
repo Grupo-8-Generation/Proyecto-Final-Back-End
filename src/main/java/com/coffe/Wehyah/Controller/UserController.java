@@ -2,7 +2,9 @@ package com.coffe.Wehyah.Controller;
 
 import com.coffe.Wehyah.Model.Product;
 import com.coffe.Wehyah.Model.User;
+import com.coffe.Wehyah.Model.UserLoginRequest;
 import com.coffe.Wehyah.Service.USIMPL;
+import com.coffe.Wehyah.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +16,21 @@ import java.util.List;
 @RequestMapping("Usuarios")
 public class UserController {
     @Autowired
-private USIMPL usimpl;
+    private USIMPL usimpl;
+
+    @Autowired
+    private UserService userService;
+
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody UserLoginRequest loginRequest) {
+        User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
 
     @GetMapping
     @RequestMapping(value = "consultarUsuario",method = RequestMethod.GET)
@@ -22,6 +38,7 @@ private USIMPL usimpl;
         List<User> usuarioList=this.usimpl.consultarUsuario();
         return ResponseEntity.ok(usuarioList);
     }
+
     @PutMapping
     @RequestMapping(value = "crearUsuario",method = RequestMethod.POST)
     public ResponseEntity<?> crearUsuario(@RequestBody User usuario){
