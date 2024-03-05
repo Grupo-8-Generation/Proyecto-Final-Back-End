@@ -21,7 +21,7 @@ public class CarItems_Controller {
         return ResponseEntity.ok(cartItemsList);
     }
 
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearCarroCompras", method = RequestMethod.POST)
     public ResponseEntity<?> crearCarroCompras(@RequestBody CartItems cartItems) {
         CartItems carroComprasCrear=this.carsimpl.crearCarroCompras(cartItems);

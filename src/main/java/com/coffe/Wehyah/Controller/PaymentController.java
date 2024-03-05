@@ -24,7 +24,7 @@ public class PaymentController {
         return ResponseEntity.ok(paymentList);
     }
 
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearPagos", method = RequestMethod.POST)
     public ResponseEntity<?> crearPagos(@RequestBody Payment payment) {
         Payment crearPagosCrear=this.pagsimpl.crearPagos(payment);

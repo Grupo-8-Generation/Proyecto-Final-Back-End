@@ -23,7 +23,7 @@ public class OrderController {
         return ResponseEntity.ok(orderList);
     }
 
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearOrden", method = RequestMethod.POST)
     public ResponseEntity<?> crearOrden(@RequestBody Order order) {
         Order ordenCrear = this.orsimpl.crearOrden(order);

@@ -20,7 +20,7 @@ public class ProductController {
         List<Product>productList=this.prsimpl.consultarProducto();
         return ResponseEntity.ok(productList);
     }
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearProducto",method = RequestMethod.POST)
     public ResponseEntity<?> crearProducto(@RequestBody Product product){
         Product productoCrear=this.prsimpl.crearProducto(product);
