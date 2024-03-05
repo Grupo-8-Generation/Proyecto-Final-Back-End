@@ -2,9 +2,7 @@ package com.coffe.Wehyah.Controller;
 
 import com.coffe.Wehyah.Model.Product;
 import com.coffe.Wehyah.Model.User;
-import com.coffe.Wehyah.Model.UserLoginRequest;
 import com.coffe.Wehyah.Service.USIMPL;
-import com.coffe.Wehyah.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,21 +14,7 @@ import java.util.List;
 @RequestMapping("Usuarios")
 public class UserController {
     @Autowired
-    private USIMPL usimpl;
-
-    @Autowired
-    private UserService userService;
-
-
-    @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody UserLoginRequest loginRequest) {
-        User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-    }
+private USIMPL usimpl;
 
     @GetMapping
     @RequestMapping(value = "consultarUsuario",method = RequestMethod.GET)
@@ -38,12 +22,13 @@ public class UserController {
         List<User> usuarioList=this.usimpl.consultarUsuario();
         return ResponseEntity.ok(usuarioList);
     }
-
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearUsuario",method = RequestMethod.POST)
     public ResponseEntity<?> crearUsuario(@RequestBody User usuario){
+        String mensaje = "";
         User usuarioCrear=this.usimpl.crearUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCrear);
+        mensaje = "El usuario " + usuarioCrear.getName() + " ha sido creado correctamente";
+        return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
     @PutMapping
     @RequestMapping(value = "modificarUsuario",method = RequestMethod.PUT)

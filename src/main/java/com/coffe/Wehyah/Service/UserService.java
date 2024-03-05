@@ -10,6 +10,6 @@ public interface UserService {
     public User actualizarUsuario(User usuario);
     public User buscarUsuario(int id);
     public void eliminarUsuario(int id);
-    public User authenticateUser(String username, String password);
+//    public User authenticateUser(String username, String password);
 }
 

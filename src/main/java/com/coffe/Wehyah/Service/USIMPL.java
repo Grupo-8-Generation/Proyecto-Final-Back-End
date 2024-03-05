@@ -39,14 +39,14 @@ public class USIMPL implements UserService {
         this.userRepository.deleteById(id);
     }
 
-    @Override
-    public User authenticateUser(String username, String password) {
-        // Implement your authentication logic here
-        User user = this.userRepository.findByUsername(username);
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
-        } else {
-            return null;
-        }
-    }
+//    @Override
+//    public User authenticateUser(String username, String password) {
+//        // Implement your authentication logic here
+//        User user = this.userRepository.findByUsername(username);
+//        if (user != null && user.getPassword().equals(password)) {
+//            return user;
+//        } else {
+//            return null;
+//        }
+//    }
 }

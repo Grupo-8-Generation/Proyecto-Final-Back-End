@@ -37,6 +37,5 @@ public class CARSIMPL implements CarService {
     @Override
     public void eliminarCarroCompras(int id) {
         this.cartItemsRepo.deleteById(id);
-
     }
 }
