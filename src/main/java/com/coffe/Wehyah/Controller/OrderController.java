@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Ordenes")
+@RequestMapping("Ordenes")
 public class OrderController {
     @Autowired
     private ORSIMPL orsimpl;
@@ -23,7 +23,7 @@ public class OrderController {
         return ResponseEntity.ok(orderList);
     }
 
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearOrden", method = RequestMethod.POST)
     public ResponseEntity<?> crearOrden(@RequestBody Order order) {
         Order ordenCrear = this.orsimpl.crearOrden(order);
@@ -33,20 +33,14 @@ public class OrderController {
     @PutMapping
     @RequestMapping(value = "modificarOrden", method = RequestMethod.PUT)
     public ResponseEntity<?> modificarOrden(@RequestBody Order order){
-        Order ordenModificar=this.orsimpl.modificarOrden(order);
+        Order ordenModificar=this.orsimpl.actualizarOrden(order);
         return ResponseEntity.status(HttpStatus.CREATED).body(ordenModificar);
-    }
-
-    @PatchMapping("actualizarOrden/{id}")
-    public ResponseEntity<?> actualizarOrden(@PathVariable int id){
-        Order order=this.orsimpl.actualizarOrden(id);
-        return ResponseEntity.ok(order);
     }
 
     @GetMapping
     @RequestMapping(value = "buscarOrden/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarOrden(@PathVariable int id){
-        Order order=this.orsimpl.buscarOrden(id);
+        Order order= this.orsimpl.buscarOrden(id);
         return ResponseEntity.ok(order);
     }
 

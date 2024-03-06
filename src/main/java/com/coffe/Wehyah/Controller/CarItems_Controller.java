@@ -21,7 +21,7 @@ public class CarItems_Controller {
         return ResponseEntity.ok(cartItemsList);
     }
 
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearCarroCompras", method = RequestMethod.POST)
     public ResponseEntity<?> crearCarroCompras(@RequestBody CartItems cartItems) {
         CartItems carroComprasCrear=this.carsimpl.crearCarroCompras(cartItems);
@@ -37,7 +37,7 @@ public class CarItems_Controller {
     }
 
     @GetMapping
-    @RequestMapping(value = "buscarCarroCompras/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "buscarCarroCompras{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarCarroCompras(@PathVariable int id){
         CartItems cartItems=this.carsimpl.buscarCarroCompras(id);
         return ResponseEntity.ok(cartItems);

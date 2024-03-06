@@ -1,15 +1,16 @@
 package com.coffe.Wehyah.Service;
 
 import com.coffe.Wehyah.Model.Order;
-import com.coffe.Wehyah.Model.OrderDetail;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface OrderService {
+@Repository
+public interface OrderService  {
     public List<Order> consultarOrden();
     public Order crearOrden(Order order);
-    public Order modificarOrden(Order order);
-    public Order actualizarOrden(int id);
+    public Order actualizarOrden(Order order);
     public Order buscarOrden(int id);
     public void eliminarOrden(int id);
 }

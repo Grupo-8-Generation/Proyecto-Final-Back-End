@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Productos")
-public class ProducController {
+public class ProductController {
     @Autowired
     private PRSIMPL prsimpl;
 
@@ -20,7 +20,7 @@ public class ProducController {
         List<Product>productList=this.prsimpl.consultarProducto();
         return ResponseEntity.ok(productList);
     }
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearProducto",method = RequestMethod.POST)
     public ResponseEntity<?> crearProducto(@RequestBody Product product){
         Product productoCrear=this.prsimpl.crearProducto(product);
@@ -29,13 +29,8 @@ public class ProducController {
     @PutMapping
     @RequestMapping(value = "modificarProducto",method = RequestMethod.PUT)
     public ResponseEntity<?> modificarProducto(@RequestBody Product product){
-        Product productModificar=this.prsimpl.modificarProducto(product);
+        Product productModificar=this.prsimpl.actualizarProducto(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(productModificar);
-    }
-    @PatchMapping("actualizarProducto/{id}")
-    public ResponseEntity<?> actualizarProducto(@PathVariable int id) {
-        Product product=this.prsimpl.actualizarProducto(id);
-        return ResponseEntity.ok(product);
     }
     @GetMapping
     @RequestMapping(value = "buscarProducto/{id}",method = RequestMethod.GET)

@@ -14,7 +14,9 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "user_id")
+
     private Integer userId;
 
     @Column(name = "name")
@@ -26,6 +28,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
+
     @Column(name = "phone_number")
     private String phoneNumber;
 
@@ -33,6 +36,7 @@ public class User {
     private String identificationType;
 
     @Column(name = "dentification_number")
+
     private Integer dentificationNumber;
 
     @Column(name = "address")
@@ -45,6 +49,7 @@ public class User {
     private String country;
 
     @Column(name = "is_admin")
+
     private Boolean isAdmin;
 
     @OneToMany(mappedBy = "user")

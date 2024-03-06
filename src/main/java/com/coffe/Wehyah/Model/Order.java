@@ -1,82 +1,38 @@
 package com.coffe.Wehyah.Model;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.thymeleaf.spring6.processor.SpringErrorClassTagProcessor;
 
 import java.util.Date;
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Integer orderID;
 
+    @Column(name = "creation_date")
     private Date creationDate;
+
+    @Column(name = "total_amount")
     private double totalAmount;
+
+    @Column(name = "order_status")
     private String orderStatus;
+
     @ManyToOne
+    @JoinColumn(name = "users_id")
     private User user;
+
     @OneToOne(mappedBy = "order")
     private OrderDetail orderDetail;
 
-
-    public  Order(){
-
-    }
-
-    public Order(Integer orderID, Date creationDate, double totalAmount, String orderStatus) {
-        this.orderID = orderID;
-        this.creationDate = creationDate;
-        this.totalAmount = totalAmount;
-        this.orderStatus = orderStatus;
-    }
-
-    public Integer getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(Integer orderID) {
-        this.orderID = orderID;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public OrderDetail getOrderDetail() {
-        return orderDetail;
-    }
-
-    public void setOrderDetail(OrderDetail orderDetail) {
-        this.orderDetail = orderDetail;
-    }
 
     @Override
     public String toString() {

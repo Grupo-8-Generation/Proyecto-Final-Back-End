@@ -9,13 +9,20 @@ import java.util.List;
 public class CartItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "car_items_id")
     private Integer carItemsId;
+
+    @Column(name = "products_cuantity")
     private Integer productsCuantity;
+
+    @Column(name = "item_total_price")
     private double itemTotalPrice;
+
     @OneToOne
+    @JoinColumn(name = "order_id")
     private Order order;
-  //  @OneToMany(mappedBy = "cartItems")
-  //  private List<Product> products;
+    @OneToMany(mappedBy = "cartItems")
+    private List<Product> products;
 
     public CartItems(){
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Usuarios")
+@RequestMapping("Usuarios")
 public class UserController {
     @Autowired
 private USIMPL usimpl;
@@ -22,23 +22,21 @@ private USIMPL usimpl;
         List<User> usuarioList=this.usimpl.consultarUsuario();
         return ResponseEntity.ok(usuarioList);
     }
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearUsuario",method = RequestMethod.POST)
     public ResponseEntity<?> crearUsuario(@RequestBody User usuario){
+        String mensaje = "";
         User usuarioCrear=this.usimpl.crearUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCrear);
+        mensaje = "El usuario " + usuarioCrear.getName() + " ha sido creado correctamente";
+        return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
     @PutMapping
     @RequestMapping(value = "modificarUsuario",method = RequestMethod.PUT)
     public ResponseEntity<?> modificarUsuario(@RequestBody User usuario){
-        User userModificar=this.usimpl.modificarUsuario(usuario);
+        User userModificar=this.usimpl.actualizarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(userModificar);
     }
-    @PatchMapping("actualizarUsuario/{id}")
-    public ResponseEntity<?> actualizarUsuario(@PathVariable int id) {
-        User user=this.usimpl.actualizarUsuario(id);
-        return ResponseEntity.ok(user);
-    }
+
     @GetMapping
     @RequestMapping(value = "buscarUsuario/{id}",method = RequestMethod.GET)
     public ResponseEntity<?> buscarUsuario(@PathVariable int id){

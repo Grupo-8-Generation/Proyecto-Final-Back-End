@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Pagos")
+@RequestMapping("Pagos")
 public class PaymentController {
     @Autowired
     private PAGSIMPL pagsimpl;
@@ -24,7 +24,7 @@ public class PaymentController {
         return ResponseEntity.ok(paymentList);
     }
 
-    @PutMapping
+    @PostMapping
     @RequestMapping(value = "crearPagos", method = RequestMethod.POST)
     public ResponseEntity<?> crearPagos(@RequestBody Payment payment) {
         Payment crearPagosCrear=this.pagsimpl.crearPagos(payment);
@@ -39,7 +39,7 @@ public class PaymentController {
     }
 
     @GetMapping
-    @RequestMapping(value = "buscarPagos{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "buscarPagos/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarPagos(@PathVariable int id){
         Payment payment=this.pagsimpl.buscarPagos(id);
         return ResponseEntity.ok(payment);

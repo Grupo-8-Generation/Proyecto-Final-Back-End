@@ -25,6 +25,7 @@ public class Product {
 
     private double price;
 
+
     @Column(name = "quantity_available")
     private int quantityAvailable;
 
